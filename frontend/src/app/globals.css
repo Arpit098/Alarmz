@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gradient {
+  --size: 750px;
+  --speed: 50s;
+  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+
+  width: var(--size);
+  height: var(--size);
+  filter: blur(calc(var(--size) / 5));
+  z-index: 0;
+  background-image: linear-gradient(hsl(222, 84%, 60%), hsl(164, 79%, 71%));
+  animation: rotate var(--speed) var(--easing) alternate infinite;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+@media (min-width: 720px) {
+  .gradient {
+    --size: 500px;
+  }
+}
+
+body {
+  background: linear-gradient(90deg, rgba(3,12,35,1) 10%, rgba(3,26,71,1) 20%, rgba(13,46,89,1) 43%, rgba(11,45,89,1) 67%, rgba(2,18,39,1) 92%);
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  place-content: center;
+  overflow: hidden;
+}
+
+* {
+  transition: all 0.5s ease-out;
+}
